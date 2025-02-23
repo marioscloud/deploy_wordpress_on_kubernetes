@@ -1,0 +1,5 @@
+Once every object has been created, try to access WordPress on the browser by searching on the browser as {node-IP:nodeport}
+You can find the IP address of your node by running the following command: kubectl get nodes -o wide
+You can find the NodePort assigned to the WordPress service by running: kubectl get service wordpress-service -n wordpress
+Look for the PORT(S) column in the output, which will show the NodePort. It should look something like 80:30004/TCP, where 30004 is the NodePort.
+Thanks.
