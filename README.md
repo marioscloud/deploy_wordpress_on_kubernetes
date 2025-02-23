@@ -3,13 +3,15 @@
 ## Project Overview
 This project provides a comprehensive guide to how to automate the deployment, scaling, and management of containerized applications, showcasing your knowledge in modern container orchestration using Kubernetes. The repository includes a well-structured directory with modular configurations, enabling scalable and maintainable infrastructure as code practices. This repository is ideal for cloud architects, DevOps engineers, and anyone looking to practice Kubernetes skills efficiently.
 
-    • Set the IPv4 CIDR block for the subnet to 192.168.0.32/27
-    • Set the availability zone for the subnet to us-west-1b
-    • Tag the new resource and use the key-value map Name = "Web Applications Subnet"
-    • Apply the configuration to provision the infrastructure on AWS.
-    • Go to the AWS Management Console -> VPC Dashboard and notice that both the VPC and the subnet were provisioned.
-    • Test your solution and then destroy the entire infrastructure.
-
+    • Namespace
+    • Secrets
+    • Configmap
+    • Persistent Volume Claim (PVC)
+    • StatefulSet
+    • Deployment
+    • Services
+    • Network Policy.
+    
 ## Prerequisites
 - Kubernetes Cluster
 - kubectl
@@ -17,7 +19,6 @@ This project provides a comprehensive guide to how to automate the deployment, s
 
 ## Contact
 If you have any questions, feel free to reach out at marioscloud@duck.com.
-
 
 ## Usage
 1. Clone the repository:
@@ -30,22 +31,27 @@ git init
 Run the following commands to create the namespace wordpress and set it as the default.
 
 kubectl create ns wordpress
+
 kubectl config set-context --current --namespace=wordpress\
 
 4. create a secret with a database admin password, username, password, and database name and verify if the secret is created:
 
 kubectl apply -f secret.yaml
+
 kubectl get secret
 
 5. create configmap for Nginx and MySQL, and run the nginx-cm.yaml and mysql-cm.yaml files to create configmap on the WordPress namespace, then confirm that have been created:
 
 kubectl apply -f nginx-cm.yaml
+
 kubectl apply -f mysql-cm.yaml
+
 kubectl get cm
 
 6. create PVC for WordPress and MySQL, then confirm that have been created:
 
 kubectl apply -f pvc.yaml
+
 kubectl get pvc
 
 7. deploy the MySQL database, then confirm that have been done by Kubernetes:
